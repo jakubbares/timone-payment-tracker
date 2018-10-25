@@ -1,3 +1,5 @@
+import java.util.concurrent.TimeUnit;
+
 public class BalancePrintingThread extends Thread {
 
     PaymentProcessor processor;
@@ -9,7 +11,7 @@ public class BalancePrintingThread extends Thread {
     public void run() {
         while (!Thread.interrupted()) {
             try {
-                Thread.sleep(13000);
+                TimeUnit.SECONDS.sleep(10);
                 processor.tracker.printOutBalances();
             } catch (InterruptedException ex) {
                 ex.printStackTrace();

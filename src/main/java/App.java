@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class App {
 
     public static void main(String[] args) {
@@ -5,16 +7,21 @@ public class App {
 
         PaymentProcessingThread paymentProcessing = new PaymentProcessingThread(processor);
         BalancePrintingThread balancePrinting = new BalancePrintingThread(processor);
-        StopThread stopThread = new StopThread(processor);
 
 //        processor.processPaymentFile("Payments.txt");
-        paymentProcessing.start();
+//        paymentProcessing.start();
         balancePrinting.start();
-//        stopThread.start();
 
-        while (processor.allThreadsRunning) { }
-        paymentProcessing.interrupt();
-        balancePrinting.interrupt();
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNext()) {
+            String line = scanner.nextLine();
+            if (line.equalsIgnoreCase("quit")) {
+                balancePrinting.interrupt();
+                break;
+            }
+            processor.processLine(line);
+        }
+
 
     }
 }
