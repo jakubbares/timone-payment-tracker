@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class PaymentProcessingThread extends Thread {
+public class StopThread extends Thread {
 
     PaymentProcessor processor;
 
-    PaymentProcessingThread(PaymentProcessor processor) {
+    StopThread(PaymentProcessor processor) {
         this.processor = processor;
     }
 
@@ -12,7 +12,10 @@ public class PaymentProcessingThread extends Thread {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext()) {
             String line = scanner.nextLine();
-            processor.processLine(line);
+            if (line.equalsIgnoreCase("quit")) {
+                processor.allThreadsRunning = false;
+                interrupt();
+            }
         }
     }
 }

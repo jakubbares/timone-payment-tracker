@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 public class PaymentProcessor {
 
     PaymentTracker tracker = new PaymentTracker();
+    Boolean allThreadsRunning = true;
 
     public void processPaymentFile(String fileName) {
         try {
@@ -21,6 +22,7 @@ public class PaymentProcessor {
     }
 
     public void processLine(String line) {
+        if (line.equalsIgnoreCase("quit")) { return; }
         String[] lineData = line.split(" ");
         try {
             if (lineData[0].length() != 3) throw new WrongCurrencyLengthException(lineData[0].toUpperCase());

@@ -7,6 +7,13 @@ public class BalancePrintingThread extends Thread {
     }
 
     public void run() {
-        processor.tracker.printOutBalances();
+        while (!Thread.interrupted()) {
+            try {
+                Thread.sleep(13000);
+                processor.tracker.printOutBalances();
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 }

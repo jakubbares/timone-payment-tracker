@@ -8,7 +8,7 @@ public class PaymentTracker {
     public void printOutBalances() {
         for (Map.Entry<String, Integer> balance : currencyBalances.entrySet()) {
             if (balance.getValue() != 0) {
-                System.out.println(balance.getKey().toString() + ' ' + balance.getValue().toString());
+                System.out.println(balance.getKey() + ' ' + balance.getValue().toString());
             }
         }
     }

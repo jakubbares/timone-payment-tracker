@@ -1,8 +1,6 @@
 public class WrongCurrencyLengthException extends Exception {
 
-    String currencyString;
-
     public WrongCurrencyLengthException(String currencyString) {
-        super(currencyString);
+        super(currencyString + " is not the length of 3");
     }
 }
