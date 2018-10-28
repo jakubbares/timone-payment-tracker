@@ -1,9 +1,9 @@
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class PaymentTracker {
 
-    public HashMap<String, Integer> currencyBalances = new HashMap<>();
+    public ConcurrentHashMap<String, Integer> currencyBalances = new ConcurrentHashMap<>();
 
     public void printOutBalances() {
         for (Map.Entry<String, Integer> balance : currencyBalances.entrySet()) {
