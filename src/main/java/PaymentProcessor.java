@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 public class PaymentProcessor {
 
     PaymentTracker tracker = new PaymentTracker();
-    Boolean allThreadsRunning = true;
 
     public void processPaymentFile(String fileName) {
         try {

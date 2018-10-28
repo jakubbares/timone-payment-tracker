@@ -11,10 +11,10 @@ public class BalancePrintingThread extends Thread {
     public void run() {
         while (!Thread.interrupted()) {
             try {
-                TimeUnit.SECONDS.sleep(10);
+                TimeUnit.MINUTES.sleep(1);
                 processor.tracker.printOutBalances();
             } catch (InterruptedException ex) {
-                ex.printStackTrace();
+                return;
             }
         }
     }
